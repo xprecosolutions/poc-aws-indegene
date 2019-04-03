@@ -1,0 +1,57 @@
+<!-- <p>
+  products works!
+</p>
+<h2>{{product.name | uppercase}} Details</h2>
+<div><span>id: </span>{{product.id}}</div>
+<div><span>name: </span>{{product.name}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="product.name" placeholder="name">
+  </label>
+</div> -->
+<div class="container">
+<h2>All Products</h2>
+<i class="material-icons">visibility</i>
+<i class="material-icons">face</i>
+<table *ngIf="products" class="table table-hover table-responsive-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Manufacturer ID</th>
+      <th scope="col">Type</th>
+      <th scope="col">Report</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" [routerLink]="['/product', product.id]">
+      <td scope="row">{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.manufacturer}}</td>
+      <td>{{product.type}}</td>
+      <td>{{product.report}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--
+<div *ngIf="selectedProduct">
+
+  <h2>{{selectedProduct.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedProduct.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedProduct.name" placeholder="name">
+    </label>
+  </div>
+
+</div>
+-->
+
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="products.length" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination"></ngb-pagination>
+
+
+<!-- <app-product-detail [product]="selectedProduct"></app-product-detail>
+
+-->
+</div>

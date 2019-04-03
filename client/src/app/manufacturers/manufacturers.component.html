@@ -1,0 +1,41 @@
+<div class="container">
+<h2>All Manufacturers</h2>
+<i class="material-icons">visibility</i>
+<i class="material-icons">face</i>
+<table *ngIf="reports" class="table table-hover table-responsive-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <!-- <th scope="col">S</th>
+      <th scope="col">Result</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let report of reports | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <td scope="row">{{report.id}}</td>
+      <td>{{report.name}}</td>
+      <td>{{report.status}}</td>
+      <!--<td>{{report.manufacturername}}</td>
+      <td>{{report.result}}</td> -->
+    </tr>
+  </tbody>
+</table>
+
+<!--
+<div *ngIf="selectedProduct">
+
+  <h2>{{selectedProduct.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedProduct.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedProduct.name" placeholder="name">
+    </label>
+  </div>
+
+</div>
+-->
+
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="reports.length" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination"></ngb-pagination>
+</div>

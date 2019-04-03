@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- Image and text -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">{{title}}</a>
+        <!-- <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a> -->
+        <a class="nav-item nav-link" routerLink="/search" *ngIf="isAdmin">Search</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+<router-outlet></router-outlet>
