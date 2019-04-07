@@ -16,8 +16,8 @@ from datetime import datetime, timedelta
 
 # encoding=utf8
 import sys
-access_key = "AKIAI2TJNG24CTML6EJA"
-secret_key = "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"
+access_key = ""
+secret_key = ""
 
 total_ec2_cpu_thresh = 0;
 cpu_v = 10;  # threshold value
