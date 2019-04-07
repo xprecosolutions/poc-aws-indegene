@@ -1,0 +1,59 @@
+<div class="container">
+      <div class="row">
+      <div *ngIf="instance$ | async as instance" class="mt-3">
+          <h2>{{instance.id}} Details:</h2>
+          <div><span>Instance Type: </span>{{instance.instance_type}}</div>
+          <div><span>Region: </span>{{instance.region}}</div>
+          <div><span>Business Unit: </span>{{instance.business_unit_name}}</div>
+          <div><span>Project: </span>{{instance.project}}</div>
+          <div><span>Public IP: </span>{{instance.public_ip}}</div>
+          <div><span>Image ID: </span>{{instance.image_id}}</div>
+          <div><span>Tag List: </span>{{instance.tag_list}}</div>
+          <div><span>Cloudwatch Metrics</span></div>
+          <div><span>CPU Utilisation(Min): </span>{{instance.min_cpu_util}}</div>
+          <div><span>CPU Utilisation(Max): </span>{{instance.max_cpu_util}}</div>
+          <div><span>CPU Utilisation(Avg): </span>{{instance.avg_cpu_util}}</div>
+      </div>
+      </div>
+  <!-- <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div> -->
+          <div *ngIf="!addTags" class="row">
+          <!-- <div class="btn-group" role="group" aria-label="Basic example"> -->
+            <div><button type="button" style="white-space: nowrap;" class="btn btn-lg btn-outline-secondary" (click)="addTag()" >Add Tag</button></div>
+            <div><button type="button" style="white-space: nowrap;" class="btn btn-lg btn-outline-secondary" (click)="addTag()" >Shutdown</button></div>
+            <div><button type="button" class="btn btn-lg btn-outline-secondary" (click)="goBack()">Back</button></div>
+          <!-- </div> -->
+          </div>
+
+          <div class="row">
+          <div *ngIf="addTags" class="mt-3">
+              <div><span>Add Tag:</span></div>
+
+              <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label for="productid">Key</label>
+                      <input type="text" formControlName="productid" id="productid" class="form-control" required minlength="3" [ngClass]="{ 'is-invalid': submitted && f.productid.errors }" />
+                      <div *ngIf="f.productid.errors" class="invalid-feedback">
+                          <div *ngIf="f.productid.errors.required">Key is required</div>
+                          <div *ngIf="f.productid.errors.minlength">Key is minimum 3 characters long</div>
+                      </div>
+                      <label for="value">Value</label>
+                      <input type="text" formControlName="value" id="value" class="form-control" required minlength="3" [ngClass]="{ 'is-invalid': submitted && f.value.errors }" />
+                      <div *ngIf="f.value.errors" class="invalid-feedback">
+                          <div *ngIf="f.value.errors.required">Value is required</div>
+                          <div *ngIf="f.value.errors.minlength">Value is minimum 3 characters long</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <button [disabled]="loading" type="submit" class="btn btn-outline-secondary">Submit</button>
+                      <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                  </div>
+                  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+              </form>
+          </div>
+          </div>
+
+</div>

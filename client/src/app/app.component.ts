@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Quality Council of India';
+  title = 'AWS Dashboard for INDEGENE';
 
   currentUser: User;
 

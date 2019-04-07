@@ -14,6 +14,7 @@ import { AppConfigModule } from './app-config.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductsModule } from './products/products.module';
+import { InstancesModule } from './instances/instances.module';
 import { AdminComponent } from './admin';
 import { LoginComponent} from './login';
 import { SearchComponent } from './search/search.component';
@@ -42,6 +43,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     HttpClientModule,
     ProductsModule,
+    InstancesModule,
     AppRoutingModule
   ],
   providers: [

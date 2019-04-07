@@ -1,0 +1,59 @@
+<!-- <p>
+  instances works!
+</p>
+<h2>{{instance.name | uppercase}} Details</h2>
+<div><span>id: </span>{{instance.id}}</div>
+<div><span>name: </span>{{instance.name}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="instance.name" placeholder="name">
+  </label>
+</div> -->
+<div class="container">
+<h2>All Instances</h2>
+<i class="material-icons">visibility</i>
+<i class="material-icons">face</i>
+<table *ngIf="instances" class="table table-hover table-responsive-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Instance Type</th>
+      <th scope="col">Region</th>
+      <th scope="col">Business Unit</th>
+      <th scope="col">Project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i=index; let instance of instances | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" [routerLink]="['/instance', instance.region,instance.id]">
+      <td scope="row">{{i+1}}</td>
+      <td>{{instance.id}}</td>
+      <td>{{instance.instance_type}}</td>
+      <td>{{instance.region}}</td>
+      <td>{{instance.business_unit_name}}</td>
+      <td>{{instance.project}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--
+<div *ngIf="selectedInstance">
+
+  <h2>{{selectedInstance.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedInstance.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedInstance.name" placeholder="name">
+    </label>
+  </div>
+
+</div>
+-->
+
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="instances.length" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination"></ngb-pagination>
+
+
+<!-- <app-instance-detail [instance]="selectedInstance"></app-instance-detail>
+
+-->
+</div>
